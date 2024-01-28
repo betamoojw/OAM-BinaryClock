@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../Organization/knxprod-support/knx_project_14/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/14" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
+  <ManufacturerData>
+    <Manufacturer RefId="M-00FA">
+      <ApplicationPrograms>
+        <ApplicationProgram Id="%AID%" ApplicationNumber="200" ApplicationVersion="1" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="SOM" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="false" MinEtsVersion="4.0">
+          <Static>
+            <ParameterTypes>
+              <ParameterType Id="%AID%_PT-BTNInputs" Name="BTNInputs">
+                <TypeRestriction Base="Value" SizeInBit="16">
+                  <Enumeration Text="Externes KO" Value="0" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-StartBrightness" Name="StartBrightness">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="Fester Wert" Value="0" Id="%ENID%" />
+                  <Enumeration Text="Fester Wert mit Unterscheidung Tag/Nacht" Value="1" Id="%ENID%" />
+                  <Enumeration Text="Letzter Wert" Value="2" Id="%ENID%" />
+                  <Enumeration Text="Letzter Wert mit Unterscheidung Tag/Nacht" Value="3" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-InactiveBitsBrightness" Name="InactiveBitsBrightness">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="Fester Wert" Value="0" Id="%ENID%" />
+                  <Enumeration Text="Fester Wert mit Unterscheidung Tag/Nacht" Value="1" Id="%ENID%" />
+                  <Enumeration Text="Prozent Helligkeit aktiver Bits" Value="2" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+            </ParameterTypes>
+            <Parameters>
+              <Union SizeInBit="32">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%TT%00001" Name="StartBrightness" Offset="0" BitOffset="0" ParameterType="%AID%_PT-StartBrightness" Text="Einschaltverhalten" Value="0" />
+                <!-- 6 bits free -->
+                <Parameter Id="%AID%_UP-%TT%00006" Name="StartBrightnessFixedValue" Offset="1" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Einschalthelligkeit" Value="100" />
+                <Parameter Id="%AID%_UP-%TT%00007" Name="StartBrightnessFixedValueDay" Offset="1" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Einschalthelligkeit Tag" Value="100" />
+                <Parameter Id="%AID%_UP-%TT%00008" Name="StartBrightnessFixedValueNight" Offset="2" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Einschalthelligkeit Nacht" Value="100" />
+              </Union>
+              <Union SizeInBit="40">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="3" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%TT%00011" Name="InactiveBitsBrightness" Offset="0" BitOffset="0" ParameterType="%AID%_PT-InactiveBitsBrightness" Text="Helligkeit inaktiver Bits" Value="0" />
+                <!-- 6 bits free -->
+                <Parameter Id="%AID%_UP-%TT%00016" Name="InactiveBitsBrightnessFixedValue" Offset="1" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Helligkeit" Value="3" />
+                <Parameter Id="%AID%_UP-%TT%00017" Name="InactiveBitsBrightnessFixedValueDay" Offset="1" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Helligkeit Tag" Value="3" />
+                <Parameter Id="%AID%_UP-%TT%00018" Name="InactiveBitsBrightnessFixedValueNight" Offset="2" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Helligkeit Nacht" Value="3" />
+                <Parameter Id="%AID%_UP-%TT%00021" Name="InactiveBitsBrightnessPercentActive" Offset="3" BitOffset="0" ParameterType="%AID%_PT-Percent" Text="Prozent Helligkeit aktiver Bits" Value="10" />
+              </Union>
+            </Parameters>
+            <ParameterRefs>
+              <ParameterRef Id="%AID%_P-%TT%00001_R-%TT%0000101" RefId="%AID%_UP-%TT%00001" />
+              <ParameterRef Id="%AID%_P-%TT%00006_R-%TT%0000601" RefId="%AID%_UP-%TT%00006" />
+              <ParameterRef Id="%AID%_P-%TT%00007_R-%TT%0000701" RefId="%AID%_UP-%TT%00007" />
+              <ParameterRef Id="%AID%_P-%TT%00008_R-%TT%0000801" RefId="%AID%_UP-%TT%00008" />
+              <ParameterRef Id="%AID%_P-%TT%00011_R-%TT%0001101" RefId="%AID%_UP-%TT%00011" />
+              <ParameterRef Id="%AID%_P-%TT%00016_R-%TT%0001601" RefId="%AID%_UP-%TT%00016" />
+              <ParameterRef Id="%AID%_P-%TT%00017_R-%TT%0001701" RefId="%AID%_UP-%TT%00017" />
+              <ParameterRef Id="%AID%_P-%TT%00018_R-%TT%0001801" RefId="%AID%_UP-%TT%00018" />
+              <ParameterRef Id="%AID%_P-%TT%00021_R-%TT%0002101" RefId="%AID%_UP-%TT%00021" />
+            </ParameterRefs>
+            <ComObjectTable>
+              <ComObject Id="%AID%_O-%TT%00001" Name="Switch"           Number="101" ObjectSize="1 Bit"  Text="" FunctionText="Schalten"          ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00006" Name="SwitchStatus"     Number="106" ObjectSize="1 Bit"  Text="" FunctionText="Status Schalten"   ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%TT%00011" Name="DimAbsolute"      Number="111" ObjectSize="1 Byte" Text="" FunctionText="Dimmen Absolut"    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-1" />
+              <ComObject Id="%AID%_O-%TT%00012" Name="DimRelative"      Number="112" ObjectSize="4 Bit"  Text="" FunctionText="Dimmen Relativ"    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-3-7" />
+              <ComObject Id="%AID%_O-%TT%00016" Name="BrightnessStatus" Number="116" ObjectSize="1 Byte" Text="" FunctionText="Status Helligkeit" ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-1" />
+            </ComObjectTable>
+            <ComObjectRefs>
+              <ComObjectRef Id="%AID%_O-%TT%00001_R-%TT%0000101" RefId="%AID%_O-%TT%00001" />
+              <ComObjectRef Id="%AID%_O-%TT%00006_R-%TT%0000601" RefId="%AID%_O-%TT%00006" />
+              <ComObjectRef Id="%AID%_O-%TT%00011_R-%TT%0001101" RefId="%AID%_O-%TT%00011" />
+              <ComObjectRef Id="%AID%_O-%TT%00012_R-%TT%0001201" RefId="%AID%_O-%TT%00012" />
+              <ComObjectRef Id="%AID%_O-%TT%00016_R-%TT%0001601" RefId="%AID%_O-%TT%00016" />
+            </ComObjectRefs>
+            <Extension>
+              <Baggage RefId="%FILE-HELP-de%" />
+              <Baggage RefId="%FILE-ICONS%" />
+              <Baggage RefId="%FILE-openknx%" />
+              <Baggage RefId="%FILE-pics-and%" />
+              <Baggage RefId="%FILE-pics-or%" />
+            </Extension>
+          </Static>
+          <Dynamic>
+            <Channel Id="%AID%_CH-Basic" Name="BasicChannel" Number="1" Text="Binäruhr">
+              <ParameterBlock Id="%AID%_PB-5" Name="Basic" Text="Grundeinstellung" Icon="cog-outline" HelpContext="Empty">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Einschalten" UIHint="Headline" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00001_R-%TT%0000101" />
+                <choose ParamRefId="%AID%_P-%TT%00001_R-%TT%0000101">
+                  <when test="0">
+                    <ParameterRefRef RefId="%AID%_P-%TT%00006_R-%TT%0000601" />
+                  </when>
+                  <when test="1">
+                    <ParameterRefRef RefId="%AID%_P-%TT%00007_R-%TT%0000701" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%00008_R-%TT%0000801" />
+                  </when>
+                </choose>
+                <ParameterRefRef RefId="%AID%_P-%TT%00011_R-%TT%0001101" />
+                <choose ParamRefId="%AID%_P-%TT%00011_R-%TT%0001101">
+                  <when test="0">
+                    <ParameterRefRef RefId="%AID%_P-%TT%00016_R-%TT%0001601" />
+                  </when>
+                  <when test="1">
+                    <ParameterRefRef RefId="%AID%_P-%TT%00017_R-%TT%0001701" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%00018_R-%TT%0001801" />
+                  </when>
+                  <when test="2">
+                    <ParameterRefRef RefId="%AID%_P-%TT%00021_R-%TT%0002101" />
+                  </when>
+                </choose>
+                <ComObjectRefRef RefId="%AID%_O-%TT%00001_R-%TT%0000101" />
+                <ComObjectRefRef RefId="%AID%_O-%TT%00006_R-%TT%0000601" />
+                <ComObjectRefRef RefId="%AID%_O-%TT%00011_R-%TT%0001101" />
+                <ComObjectRefRef RefId="%AID%_O-%TT%00012_R-%TT%0001201" />
+                <ComObjectRefRef RefId="%AID%_O-%TT%00016_R-%TT%0001601" />
+              </ParameterBlock>
+            </Channel>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+      <Baggages>
+        <Baggage TargetPath="FF\01" Name="Help_de.zip" Id="%FILE-HELP-de%">
+          <FileInfo TimeInfo="%DATETIME%" />
+        </Baggage>
+        <Baggage TargetPath="FF\01" Name="Icons.zip" Id="%FILE-ICONS%">
+          <FileInfo TimeInfo="%DATETIME%" />
+        </Baggage>
+      </Baggages>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
