@@ -22,7 +22,7 @@ class BinaryClockCore
 {
   public:
     void setup();
-    void loop(tm &tm_local);
+    void loop(tm &tm_local, bool timeValid);
 
     void setPower(bool on);
     void setBrightness(uint8_t ledOnBrightness, uint8_t ledOffBrightness);

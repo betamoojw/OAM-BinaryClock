@@ -21,7 +21,7 @@ void BinaryClockModule::setup()
 
 void BinaryClockModule::loop()
 {
-    binaryClockCore.loop(openknxLogic.Now());
+    binaryClockCore.loop(openknxLogic.Now(), openknxLogic.timeValid());
 }
 
 void BinaryClockModule::setPower(bool on)

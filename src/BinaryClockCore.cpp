@@ -17,18 +17,18 @@ void BinaryClockCore::setup()
 #endif
 
     // Serial.println("Scan for I2C devices:");
-    // i2c_0.I2Cscan(); // should detect both IS31FL3265A
+    // _i2c.I2Cscan(); // should detect both IS31FL3265A
     // delay(1000);
 
     _ledDriver2.init(true, GLOBAL_CURRENT_MAX); // slave needs to be initialized first
     _ledDriver1.init(false, GLOBAL_CURRENT_MAX);
 }
 
-void BinaryClockCore::loop(tm &currentTime)
+void BinaryClockCore::loop(tm &currentTime, bool timeValid)
 {
-    // show sad face if current time is invalid
-    if (currentTime.tm_year < 120)
-    { // < 2020 is considered invalid
+    if (!timeValid)
+    {
+        // show sad face if current time is invalid
         currentTime.tm_year = 0b110011;
         currentTime.tm_mon = 0b000000;
         if (currentTime.tm_sec % 2 == 1)
@@ -38,10 +38,6 @@ void BinaryClockCore::loop(tm &currentTime)
         currentTime.tm_hour = 0b000000;
         currentTime.tm_min = 0b011110;
         currentTime.tm_sec = 0b100001;
-    }
-    else
-    {
-        currentTime.tm_mon += 1; // month is 0-11
     }
 
     // if (millis() % 1000 == 0)
@@ -71,9 +67,9 @@ void BinaryClockCore::loop(tm &currentTime)
         updateLeds(_ledDriver2, LEDS_DAY, LEDS_DAY_COUNT, _currentDay);
     }
 
-    if (_currentMonth != currentTime.tm_mon)
+    if (_currentMonth != currentTime.tm_mon + 1)
     {
-        _currentMonth = currentTime.tm_mon;
+        _currentMonth = currentTime.tm_mon + 1; // month is 0-11
         updateLeds(_ledDriver2, LEDS_MONTH, LEDS_MONTH_COUNT, _currentMonth);
     }
 
