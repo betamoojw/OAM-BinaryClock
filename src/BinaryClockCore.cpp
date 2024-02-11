@@ -30,7 +30,7 @@ void BinaryClockCore::loop(tm &currentTime, bool timeValid)
     {
         // show sad face if current time is invalid
         currentTime.tm_year = 0b110011;
-        currentTime.tm_mon = 0b000000;
+        currentTime.tm_mon = -1; // 1 will be added
         if (currentTime.tm_sec % 2 == 1)
             currentTime.tm_mday = 0b001100;
         else
