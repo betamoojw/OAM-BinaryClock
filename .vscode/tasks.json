@@ -1,31 +1,18 @@
 {
-	"version": "2.0.0",
-	"tasks": [
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
         {
-            "label": "OpenKNXproducer",
+            "label": "Pre-Build-Step",
             "type": "shell",
-            "command": "~/bin/OpenKNXproducer.exe",
-            "args": [
-                "create",
-                "--Debug",
-                "-h",
-                "include/knxprod.h",
-                "src/BinaryClockModule"
-            ],
-            "problemMatcher": [],
-            "group": "test"
+            "command": "lib/OGM-Common/scripts/Build/OpenKNX-Pre-Build.ps1",
+            "args": [],
+            "group": "build",
+            "problemMatcher": []
         },
         {
-            "label": "Generate Dependencies.txt",
-            "type": "shell",
-            "command": "lib/OGM-Common/scripts/setup/reusable/Build-Dependencies.ps1",
-            "args": [
-            ],
-            "problemMatcher": [],
-            "group": "test"
-        },
-        {
-            "label": "Develop: RP2040",
+            "label": "Develop RP2040",
             "type": "shell",
             "command": "scripts/OpenKNX-Build.ps1",
             "args": [
@@ -35,67 +22,70 @@
             "problemMatcher": []
         },
         {
-            "label": "Develop: RP2040 (USB)",
+            "label": "Upload JLINK RP2040",
             "type": "shell",
             "command": "scripts/OpenKNX-Build.ps1",
             "args": [
-                "develop_RP2040_USB",
+                "upload_JLINK_RP2040",
                 "upload"
             ],
             "group": "build",
             "problemMatcher": []
         },
         {
-            "label": "Develop: RP2040 (JLINK)",
+            "label": "Upload USB RP2040",
             "type": "shell",
             "command": "scripts/OpenKNX-Build.ps1",
             "args": [
-                "develop_RP2040_JLINK",
+                "upload_USB_RP2040",
                 "upload"
             ],
             "group": "build",
             "problemMatcher": []
         },
         {
-            "label": "Develop: RP2040_DUALCORE",
+            "label": "Create Dependencies",
             "type": "shell",
-            "command": "scripts/OpenKNX-Build.ps1",
-            "args": [
-                "develop_RP2040_DUALCORE"
-            ],
-            "group": "build",
-            "problemMatcher": []
+            "command": "lib/OGM-Common/scripts/setup/reusable/Build-Dependencies.ps1",
+            "args": [],
+            "problemMatcher": [],
+            "group": "build"
         },
         {
-            "label": "Develop: RP2040_DUALCORE (USB)",
+            "label": "OpenKNXproducer",
             "type": "shell",
-            "command": "scripts/OpenKNX-Build.ps1",
+            "command": "~/bin/OpenKNXproducer.exe",
             "args": [
-                "develop_RP2040_DUALCORE_USB",
-                "upload"
+                "create",
+                "--Debug",
+                "--HeaderFileName",
+                "include/knxprod.h",
+                "src/BinaryClock.xml"
             ],
-            "group": "build",
-            "problemMatcher": []
-        },
-        {
-            "label": "Develop: RP2040_DUALCORE (JLINK)",
-            "type": "shell",
-            "command": "scripts/OpenKNX-Build.ps1",
-            "args": [
-                "develop_RP2040_DUALCORE_JLINK",
-                "upload"
-            ],
-            "group": "build",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": "test"
         },
         {
             "label": "Build-Release",
             "type": "shell",
-            "command": "scripts/Build-Release.ps1", 
+            "command": "scripts/Build-Release.ps1",
             "args": [
+                "Release"
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Resolve platformio.ini",
+            "type": "shell",
+            "command": "~/.platformio/penv/Scripts/pio",
+            "args": [
+                "project",
+                "config",
+                ">platformio.ini.full.txt"
             ],
             "problemMatcher": [],
             "group": "test"
         }
-	]
+    ]
 }

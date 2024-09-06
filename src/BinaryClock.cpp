@@ -1,7 +1,7 @@
 #include "Logic.h"
 #include <Arduino.h>
 #include <BinaryClockCore.h>
-#include <BinaryClockModule.h>
+#include <BinaryClock.h>
 
 const std::string BinaryClockModule::name()
 {

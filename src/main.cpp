@@ -1,6 +1,5 @@
-#include "BinaryClockModule.h"
+#include "BinaryClock.h"
 #include "Logic.h"
-#include "VirtualButtonModule.h"
 #include "FileTransferModule.h"
 
 void setup()
@@ -9,18 +8,11 @@ void setup()
     openknx.init(firmwareRevision);
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, openknxBinaryClockModule);
-    openknx.addModule(3, openknxVirtualButtonModule);
     openknx.addModule(9, openknxFileTransferModule);
     openknx.setup();
-
-    // call direct for testing without KNX connected
-    // openknx.modules.list[0]->setup();
 }
 
 void loop()
 {
 	openknx.loop();
-
-    // call direct for testing without KNX connected
-    // openknx.modules.list[0]->loop();
 }

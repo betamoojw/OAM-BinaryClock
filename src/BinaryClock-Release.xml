@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
+
+  <op:config href="BinaryClock.conf.xml" />
+  
+  <op:ETS OpenKnxId="0xAF"
+    ApplicationNumber="0x03"
+    ApplicationVersion="%ApplicationVersion%"
+    ReplacesVersions="%ReplacesVersions%"
+    ApplicationRevision="0"
+    ProductName="Binäruhr"
+    ApplicationName="AB-BinaryClock-Logic"
+    OrderNumber="OpenKnxBinaryClock"
+  />
+
+  <op:define prefix="BASE" ModuleType="10"
+    share="../lib/OGM-Common/src/Common.share.xml">
+    <op:verify File="../lib/OGM-Common/library.json" ModuleVersion="%BASE_VerifyVersion%" />
+  </op:define>
+
+  <op:define prefix="UCT"
+    share="../../OFM-ConfigTransfer/src/ConfigTransfer.share.xml"
+    noConfigTransfer="true"
+    ModuleType="99">
+    <op:verify File="../../OFM-ConfigTransfer/library.json" ModuleVersion="%UCT_VerifyVersion%" />
+  </op:define>
+
+  <op:define prefix="BIN"
+    share="BinaryClock.share.xml"
+    template="BinaryClock.templ.xml"
+    KoSingleOffset="350"
+    ModuleType="20" />
+
+  <op:define prefix="LOG"
+    share="../lib/OFM-LogicModule/src/Logikmodul.share.xml"
+    template="../lib/OFM-LogicModule/src/Logikmodul.templ.xml"
+    NumChannels="99"
+    KoOffset="50"
+    ModuleType="10">
+    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="%LOG_VerifyVersion%" />
+  </op:define>
+
+  <generate />
+
+</KNX>
