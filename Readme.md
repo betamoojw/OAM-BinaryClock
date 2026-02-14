@@ -2,7 +2,9 @@
 
 OpenKNX Firmware und Anwendung einer Binär-Wanduhr, die Uhrzeit und Datum anzeigt.
 
-Die Stromversorgung erfolgt dabei komplett über den Bus.
+## Inbetriebnahme
+
+Die Inbetriebnahme geht am einfachsten mit der [OpenKNX Toolbox](https://openknx.atlassian.net/wiki/spaces/OpenKNX/pages/66295/OpenKNX-Toolbox).
 
 ## Kompatible Hardware
 
@@ -14,4 +16,4 @@ Eine Haupt-PCB ist direkt in die Acrylglasplatten integriert:
 
 <kbd>![Haupt-PCB](hardware/pcb-main.png)</kbd>
 
-Alle Infos zur kompatiblen Hardware findet sich [hier](https://www.ab-smarthouse.com/produkt/openknx-wanduhr-binaer/) oder bei Interesse einfach Kontakt per [E-Mail](mailto:info@ab-smarthouse.com?subject=[OpenKNX]%20BinaryClock) aufnehmen.
+Eine Funktionsbeschreibung sowie kompatible Hardware findet sich [hier](https://openknx.atlassian.net/wiki/spaces/OpenKNX/pages/8225057/AB-SmartHouse+Wanduhr+bin+r).
